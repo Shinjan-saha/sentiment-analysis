@@ -1,0 +1,25 @@
+# Virtual environment
+tf-env/
+
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# TensorFlow and Keras logs
+tensorflow_log/
+
+
+
+# IDE-specific files (for example, VSCode or PyCharm)
+.vscode/
+.idea/
+
+# macOS-specific files
+.DS_Store
+
+# Windows-specific files (if using Windows in the future)
+Thumbs.db

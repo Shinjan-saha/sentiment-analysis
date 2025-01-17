@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 
 
 df = pd.read_csv('data/imdb_reviews.csv')
-
 print(df.head())
 
 
@@ -25,7 +24,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 tokenizer = Tokenizer(num_words=5000, oov_token="<OOV>")
 tokenizer.fit_on_texts(X_train)
 
-
 X_train_sequences = tokenizer.texts_to_sequences(X_train)
 X_test_sequences = tokenizer.texts_to_sequences(X_test)
 
@@ -37,7 +35,12 @@ X_test_padded = pad_sequences(X_test_sequences, maxlen=max_length, padding='post
 
 model = tf.keras.Sequential([
     tf.keras.layers.Embedding(input_dim=5000, output_dim=64, input_length=max_length),
-    tf.keras.layers.LSTM(64),
+    tf.keras.layers.LSTM(64, return_sequences=True),
+    tf.keras.layers.LSTM(32),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dropout(0.3),  
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dropout(0.3), 
     tf.keras.layers.Dense(32, activation='relu'),
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
@@ -46,7 +49,7 @@ model = tf.keras.Sequential([
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 
-history = model.fit(X_train_padded, y_train, epochs=5, batch_size=64, validation_data=(X_test_padded, y_test))
+history = model.fit(X_train_padded, y_train, epochs=10, batch_size=64, validation_data=(X_test_padded, y_test))
 
 
 model.save('models/sentiment_model.h5')

@@ -5,9 +5,9 @@
 
 ## Accuracy Graph
 
-<img src="./img/Figure_1.png">
+<img src="./img/Figure_2.png">
 
-#### 50% Accuracy due to less Data  set as they al have been maually collecetd from the IMDB Manually 
+#### Tried to Improve Accuracy by increasing the DataSet & Dense Layer
 
 ## how it's Tranied 
 

@@ -8,8 +8,6 @@ import pickle
 model = tf.keras.models.load_model('models/sentiment_model.h5')
 
 
-with open('models/tokenizer.pickle', 'rb') as handle:
-    tokenizer = pickle.load(handle)
 
 
 label_decoder = {0: 'Negative', 1: 'Positive'}

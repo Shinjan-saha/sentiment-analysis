@@ -1,6 +1,6 @@
-# tensorflow-macos
-# tensorflow-metal
-pandas
-numpy
+streamlit
+tensorflow
 scikit-learn
+pandas
 matplotlib
+
